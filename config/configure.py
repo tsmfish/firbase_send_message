@@ -5,7 +5,7 @@ import io
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-PROJECT_ID = 'PROJECT_ID'
+PROJECT_ID = 'fir-testnoti-c842e'
 BASE_URL = 'https://firebaseremoteconfig.googleapis.com'
 REMOTE_CONFIG_ENDPOINT = 'v1/projects/' + PROJECT_ID + '/remoteConfig'
 REMOTE_CONFIG_URL = BASE_URL + '/' + REMOTE_CONFIG_ENDPOINT

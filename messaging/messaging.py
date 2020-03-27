@@ -12,10 +12,11 @@ customizations. For example, a badge is added to messages that are sent to iOS d
 import argparse
 import json
 import requests
+import datetime
 
 from oauth2client.service_account import ServiceAccountCredentials
 
-PROJECT_ID = '<YOUR-PROJECT-ID>'
+PROJECT_ID = 'fir-testnoti-c842e'
 BASE_URL = 'https://fcm.googleapis.com'
 FCM_ENDPOINT = 'v1/projects/' + PROJECT_ID + '/messages:send'
 FCM_URL = BASE_URL + '/' + FCM_ENDPOINT
@@ -30,6 +31,7 @@ def _get_access_token():
   credentials = ServiceAccountCredentials.from_json_keyfile_name(
       'service-account.json', SCOPES)
   access_token_info = credentials.get_access_token()
+  print("access_token [%s]" % access_token_info.access_token)
   return access_token_info.access_token
 # [END retrieve_access_token]
 
@@ -63,10 +65,13 @@ def _build_common_message():
   """
   return {
     'message': {
-      'topic': 'news',
+      'token': 'c8_pW2KDS6ibkb-IFoWBvF:APA91bGqCx38a105nkNJDmOKOIr2r6zFhXFd81VCHOdbc7tLDNvMSCtWLyeJOxXWlKg84TXdw5V-tHglxmcjTVdEbentAaRMc6GvScuPtNmvhMy8PGuaNIgK495IN8-a4IKerOMvQUOo',
       'notification': {
-        'title': 'FCM Notification',
-        'body': 'Notification from FCM'
+        'title': datetime.datetime.now().ctime(),
+        'body': 'Notification from FCM',
+      },
+      "data": {
+        'Type': 'test',
       }
     }
   }
